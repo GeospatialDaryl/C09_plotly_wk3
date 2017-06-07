@@ -1,0 +1,61 @@
+---
+title: "Hello, Plotly!"
+author: "Daryl Van Dyke"
+date: "June 7, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Hello, Plotly!
+
+This is great.  I like plotly, just fine, but I *really* dig that grammar o' graphics business.  We can use ```ggplotly```!!!
+
+```{r, echo = FALSE}
+library(plotly)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+data("iris")
+dI <- tbl_df(iris)
+```
+
+## Introducing, GGPlotly!
+
+You can also embed plots, for example:
+
+```{r pressure, echo=TRUE}
+p <- ggplot( data = dI, aes( x = Sepal.Length, y = Sepal.Width)) +
+        geom_point(aes(text = paste("Petal Length:", Petal.Length))) + 
+        geom_smooth(aes(colour = Species, fill = Species)) +
+        facet_wrap(~ Species)
+
+ggplotly(p)
+```
+## Now, dig this crazy plot.
+
+```{r}
+
+p2 <- ggplot( data = dI, aes( x = Petal.Length, y = Petal.Width)) +
+        geom_point(aes(text = paste("Sepal Length:", Sepal.Length))) + 
+        geom_smooth(aes(colour = Species, fill = Species)) +
+        facet_wrap(~ Species)
+
+ggplotly(p)
+```
+
+
+## Far Out!  Check this one!
+
+```{r}
+
+
+p3 <- plot_ly(dI, x = ~Petal.Length, y  = ~Petal.Width, z = ~Sepal.Width,
+              type = "scatter3d", mode = "markers", color = ~Species)
+p3
+```
+
+
