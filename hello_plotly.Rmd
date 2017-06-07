@@ -1,8 +1,8 @@
 ---
-title: "Hello, Plotly!"
+title: "Hello_Plotly"
 author: "Daryl Van Dyke"
 date: "June 7, 2017"
-output: html_document
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
