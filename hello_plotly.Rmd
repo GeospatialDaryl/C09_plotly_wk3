@@ -23,18 +23,27 @@ data("iris")
 dI <- tbl_df(iris)
 ```
 
+---
+
 ## Introducing, GGPlotly!
 
 You can also embed plots, for example:
 
-```{r pressure, echo=TRUE}
+```{r pressure, echo=FALSE}
 p <- ggplot( data = dI, aes( x = Sepal.Length, y = Sepal.Width)) +
         geom_point(aes(text = paste("Petal Length:", Petal.Length))) + 
         geom_smooth(aes(colour = Species, fill = Species)) +
         facet_wrap(~ Species)
 
+```
+
+```{r}
 ggplotly(p)
 ```
+
+
+---
+
 ## Now, dig this crazy plot.
 
 ```{r}
@@ -44,18 +53,23 @@ p2 <- ggplot( data = dI, aes( x = Petal.Length, y = Petal.Width)) +
         geom_smooth(aes(colour = Species, fill = Species)) +
         facet_wrap(~ Species)
 
-ggplotly(p)
+```
+---
+```{r}
+ggplotly(p2)
 ```
 
+---
 
 ## Far Out!  Check this one!
 
 ```{r}
-
-
 p3 <- plot_ly(dI, x = ~Petal.Length, y  = ~Petal.Width, z = ~Sepal.Width,
               type = "scatter3d", mode = "markers", color = ~Species)
-p3
+```
+```{r}
+ggplotly(p3)
+
 ```
 
 
